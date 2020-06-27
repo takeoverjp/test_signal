@@ -7,15 +7,16 @@
 int
 main (int argc, char *argv[])
 {
-  if (argc < 1)
+  if (argc < 2)
     {
+      fprintf (stderr, "[USAGE] %s signo pid\n", argv[0]);
       exit (EXIT_FAILURE);
     }
 
-  int sig = SIGTERM;
-  long topid = strtol (argv[1], NULL, 10);
+  long sig = strtol (argv[1], NULL, 10);
+  long topid = strtol (argv[2], NULL, 10);
   kill (topid, sig);
-  fprintf (stderr, "sig: %d, from: %d, to: %ld, uid: %d\n",
+  fprintf (stderr, "sig: %ld, from: %d, to: %ld, uid: %d\n",
            sig, getpid(), topid, getuid());
   return 0;
 }
