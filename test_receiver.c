@@ -48,7 +48,7 @@ main (void)
     }
   printf ("pid: %d\n", getpid());
 
-  sleep (100);
+  sleep (10000);
 
   fprintf (stderr, "sig: %d, si_pid: %d, si_uid: %d, si_code: %s\n",
            g_sig,
