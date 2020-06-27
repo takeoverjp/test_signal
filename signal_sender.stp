@@ -1,0 +1,6 @@
+#!/usr/bin/env stap
+probe signal.send
+{
+  if (sig==strtol(@1,10) && sig_pid==strtol(@2,10))
+    printf("%s: %s(%d) -> %s(%d)\n", sig_name, execname(), pid(), pid_name, sig_pid)
+}
